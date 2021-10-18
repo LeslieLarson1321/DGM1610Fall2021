@@ -16,33 +16,69 @@ public class PlayerController : MonoBehaviour
     private Camera camera;
 
     private Rigidbody rb;
+
+    private Weapon weapon;
+
+    void Awake()
+    {
+        weapon = GetComponent<Weapon>();
+    }
     
     // Start is called before the first frame update
     void Start()
     {
         // Getting Components:
-        camera = camera.main;
-        rb = getComponent<Rigidbody>();
+        camera = Camera.main;
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+        CamLook();      
+        if(Input.GetButton("Fire1"))           // Creates the fire button.
+        {
+            if(weapon.CanShoot())
+                weapon.Shoot();
+        }
+      
+        if(Input.GetButtonDown("Jump"))          // Jump Button
+            Jump();
     }
 
     void Move()
     {
-        float x = Input.GetAxis("Horizontal") * moveSpeed;
+        float x = Input.GetAxis("Horizontal") * moveSpeed;          // (Causes speed of player movement to appear.)
         float z = Input.GetAxis("Vertical") * moveSpeed;
+        
+        Vector3 dir = transform.right * x + transform.forward * z;       // Moves direction relative to camera.
 
-        rb.velocity = new Vector3(x, rb.velocity.y, z);
+         // Old Code:    rb.velocity = new Vector3(x, rb.velocity.y, z);
+        
+        dir.y = rb.velocity.y;                             // Adds Direction to Jump
+        rb.velocity = dir;
+
     }
 
-    void camLook()
+    void CamLook()
     {
-        float y = Input.GetAxis("Mouse X") * lookSensitivity;
-            // rotx = rotx + Input.GetAxis("Mouse Y") * lookSensitivity;
+        float y = Input.GetAxis("Mouse X") * lookSensitivity;               // Camera angle sensitivity
+            // Old Code:    rotx = rotx + Input.GetAxis("Mouse Y") * lookSensitivity;
         rotx += Input.GetAxis("Mouse Y") * lookSensitivity;
+
+        rotx = Mathf.Clamp(rotx, minLookX, maxLookX);
+        camera.transform.localRotation = Quaternion.Euler(-rotx, 0, 0);
+        transform.eulerAngles += Vector3.up * y;
+    }
+
+    void Jump()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+
+        if(Physics.Raycast(ray,1.1f))                                   // Adds Force to Jump.
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
     }
 }
