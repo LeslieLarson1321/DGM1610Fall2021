@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Stats")]
+    
     public float moveSpeed;                                     // Player's Movement Speed in Units Per Second.
     public float jumpForce;                                     // Force Applied Upwards.
+
+    public int curHp;
+    public int maxHp;
+
+
+    [Header("Mouse Look")]
+    
     public float lookSensitivity;                               // Mouse Movement (Perspective) Sensitivity.
 
     public float maxLookX;                                      // Lowest Angle Player Can Look From
@@ -30,6 +39,15 @@ public class PlayerController : MonoBehaviour
         // Getting Components:
         camera = Camera.main;
         rb = GetComponent<Rigidbody>();
+    }
+    // Applies damage to the player.
+
+    public void TakeDamage(int damage)
+    {
+        curHp -= damage;
+        
+        if(curHp = 0)
+            Die();
     }
 
     // Update is called once per frame

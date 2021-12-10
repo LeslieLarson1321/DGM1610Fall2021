@@ -6,7 +6,7 @@ using System.Linq;
 
 public class Enemy : MonoBehaviour
 {
-    public int curHP, maxHP, scoreToGive;                   // Enemy Stats
+    public int curHp, maxHp, scoreToGive;                   // Enemy Stats
 
     public float moveSpeed, attackRange, yPathOffset;       // Movement
 
@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
         target = FindObjectOfType<PlayerController>().gameObject;
         InvokeRepeating("UpdatePath", 0.0f, 0.5f);
 
-        curHP = maxHP;
+        curHp = maxHp;
     }
 
     void UpdatePath()
@@ -47,6 +47,19 @@ public class Enemy : MonoBehaviour
 
         if(transform.position == path[0] + new Vector3(0, yPathOffset, 0))
             path.RemoveAt(0);
+    }
+        // Applies damage to the player.
+    public void TakeDamage(int damage)
+    {
+        curHp -= damage;
+
+        if(curHp <= 0)
+            Die();
+    }
+        // If player's health is reduced to zero or below, then run "Die."
+    void Die()
+    { 
+        Destroy(gameObject);
     }
 
     void Update()

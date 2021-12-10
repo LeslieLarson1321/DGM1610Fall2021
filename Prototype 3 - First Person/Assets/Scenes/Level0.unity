@@ -459,11 +459,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044f59152821449b987bf534dc4281de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  jumpForce: 10
-  lookSensitivity: 3
-  maxLookX: 45
-  minLookX: -45
+  moveSpeed: 10
+  jumpForce: 1
+  curHp: 100
+  maxHp: 100
+  lookSensitivity: 5
+  maxLookX: 10
+  minLookX: -10
 --- !u!54 &691195381
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1282,8 +1284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9ef1dfaa742486288ddeec2cdbaa68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curHP: 10
-  maxHP: 10
+  curHp: 0
+  maxHp: 0
   scoreToGive: 100
   moveSpeed: 2
   attackRange: 5
