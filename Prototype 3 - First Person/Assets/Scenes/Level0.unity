@@ -1036,6 +1036,8 @@ Transform:
   - {fileID: 1028246648}
   - {fileID: 691195376}
   - {fileID: 675879634}
+  - {fileID: 1688651635}
+  - {fileID: 2089910703}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1146,8 +1148,10 @@ GameObject:
   - component: {fileID: 1688651634}
   - component: {fileID: 1688651633}
   - component: {fileID: 1688651632}
+  - component: {fileID: 1688651639}
   - component: {fileID: 1688651637}
   - component: {fileID: 1688651636}
+  - component: {fileID: 1688651638}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1225,13 +1229,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688651631}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.53, y: 2.34, z: 0.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 688190884}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 1592379884}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1688651636
 MonoBehaviour:
@@ -1266,6 +1270,40 @@ MonoBehaviour:
   infiniteAmmo: 0
   bulletSpeed: 10
   shootRate: 1
+--- !u!114 &1688651638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688651631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9ef1dfaa742486288ddeec2cdbaa68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curHP: 10
+  maxHP: 10
+  scoreToGive: 100
+  moveSpeed: 2
+  attackRange: 5
+  yPathOffset: 1
+--- !u!54 &1688651639
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688651631}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &1766269071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,13 +1519,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089910702}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.7600722, y: 1.8233825, z: 0.79608035}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1663859203}
   - {fileID: 2045446892}
   - {fileID: 770826079}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 1592379884}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
