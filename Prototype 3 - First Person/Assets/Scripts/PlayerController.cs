@@ -46,8 +46,28 @@ public class PlayerController : MonoBehaviour
     {
         curHp -= damage;
         
-        if(curHp = 0)
+        if(curHp <= 0)
             Die();
+    }
+
+    void Jump()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+
+        if(Physics.Raycast(ray,1.1f))                                   // Adds Force to Jump.
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+
+    public void GiveHealth(int amountToGive)
+    {
+        curHp = Mathf.Clamp(curHp + amountToGive, 0, maxHp);
+    }
+
+    public void GiveAmmo(int amountToGive)
+    {
+        weapon.curAmmo = Mathf.Clamp(weapon.curAmmo + amountToGive, 0, weapon.maxAmmo);
     }
 
     // Update is called once per frame
@@ -90,13 +110,4 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles += Vector3.up * y;
     }
 
-    void Jump()
-    {
-        Ray ray = new Ray(transform.position, Vector3.down);
-
-        if(Physics.Raycast(ray,1.1f))                                   // Adds Force to Jump.
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
-    }
 }
