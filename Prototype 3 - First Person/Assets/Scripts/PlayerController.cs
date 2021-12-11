@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         // Getting Components:
         camera = Camera.main;
         rb = GetComponent<Rigidbody>();
+<<<<<<< HEAD
     }
     // Applies damage to the player.
 
@@ -68,6 +69,8 @@ public class PlayerController : MonoBehaviour
     public void GiveAmmo(int amountToGive)
     {
         weapon.curAmmo = Mathf.Clamp(weapon.curAmmo + amountToGive, 0, weapon.maxAmmo);
+=======
+>>>>>>> main
     }
 
     // Update is called once per frame
@@ -108,6 +111,19 @@ public class PlayerController : MonoBehaviour
         rotx = Mathf.Clamp(rotx, minLookX, maxLookX);
         camera.transform.localRotation = Quaternion.Euler(-rotx, 0, 0);
         transform.eulerAngles += Vector3.up * y;
+<<<<<<< HEAD
+=======
+    }
+
+    void Jump()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+
+        if(Physics.Raycast(ray,1.1f))                                   // Adds Force to Jump.
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+>>>>>>> main
     }
 
 }
