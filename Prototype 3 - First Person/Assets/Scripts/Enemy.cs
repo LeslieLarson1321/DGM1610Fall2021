@@ -57,6 +57,7 @@ public class Enemy : MonoBehaviour
             Die();
     }
         // If player's health is reduced to zero or below, then run "Die."
+    
     void Die()
     { 
         Destroy(gameObject);
