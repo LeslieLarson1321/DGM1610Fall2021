@@ -11,7 +11,7 @@ public class GameUI : MonoBehaviour
 
     public TextMeshProGui scoreText;
 
-    public TextMeshPro ammoText;
+    public TextMeshProGui ammoText;
 
     public image healthBarFill;
 
@@ -38,15 +38,49 @@ public class GameUI : MonoBehaviour
         
     }
 
-    public void UpdateHealthBar(int curHp, int maxHp)
+    public void UpdateHealthBar (int curHp, int maxHp)
     {
         healthBarFill.fillAmount = (float)curHp / (float)maxHp;
     }
 
     public void UpdateScoreText (int score)
     {
-        scoreText.text;
+        scoreText.text = "Score: " + score;
     }
+
+    public void UpdateAmmoText (int curAmmo, int maxAmmo)
+    {
+        ammoText.text = "Ammo: " + curAmmo + " / " + maxAmmo;
+    }
+
+    public void TogglePauseMenu (bool paused)
+    {
+        pauseMenu.SetActive(paused);
+    }
+
+    public void SetEndgameScreen (bool won, int score)
+    {
+        endgameScreen.SetActive(true);
+        endgameHeaderText.text = won == true ? "You've Won!" : "You've Lost!";
+        endgameHeaderText.color = won == true ? Color.green : Color.red;
+        endgameScoreText.text = "cb>Score</b>\n" + score;
+    }
+
+    public void OnResumeButton()
+    {
+
+    }
+
+    public void OnRestartButton()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
+    public void OnMenuButton()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
     // Update is called once per frame
     void Update()
     {
