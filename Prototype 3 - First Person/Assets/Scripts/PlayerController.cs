@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
        // Getting Components:
        camera = Camera.main;
        rb = GetComponent<Rigidbody>();
+
+       // Initialize the UI.
+       GameUI.instance.UpdateHealthBar(curHp, maxHp);
    }
    // Applies damage to the player.
  
